@@ -2,6 +2,9 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mess Mosharraf</title>
+<link rel="manifest" href="manifest.json"><meta name="theme-color" content="#12302A">
+<link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#EDF1EE;--card:#fff;--ink:#12302A;--mute:#5E7A72;--line:#D5DFDA;--pos:#1B7F5C;--neg:#C2412D;--acc:#12302A;--on:#fff;
@@ -251,6 +254,7 @@ document.addEventListener("input",e=>{const t=e.target;
 document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.id==="pw")tryPw()});
 document.addEventListener("change",e=>{if(e.target.id==="ls"){R.cur=+e.target.value;S=R.users[R.cur].data;store();render()}});
 render();
+if("serviceWorker"in navigator&&location.protocol==="https:")navigator.serviceWorker.register("sw.js").catch(()=>{});
 setInterval(gpull,6000);document.addEventListener("visibilitychange",()=>{if(!document.hidden)gpull()});gpull();
 if(window.claude&&claude.use)claude.use("db").then(db=>{if(!db)return;DB=db;let first=true;sy="syncing";hd();
  db.doc("mess/ledger").onSnapshot(snap=>{const d=snap.exists?snap.data():null;
