@@ -75,12 +75,20 @@ nav{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px s
 nav div{max-width:480px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
 nav button{padding:11px 0;border:0;border-radius:12px;background:transparent;color:var(--mute);font:600 13px inherit;cursor:pointer}
 nav button.on{background:var(--acc);color:var(--on)}
+.hero{background:linear-gradient(135deg,#12302A 0%,#1B7F5C 100%);color:#fff;border-radius:20px;padding:18px;margin:6px 0 14px;box-shadow:0 8px 24px -12px rgba(18,48,42,.6)}
+.hero small{color:rgba(255,255,255,.72);font-size:12px}.hero .ht{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:2px 0}
+.hero .hg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.hero .hg div{background:rgba(255,255,255,.12);border-radius:12px;padding:10px}.hero .hg b{display:block;font-size:18px;font-weight:800}
+.hero .hb{margin-top:12px;font-size:13px;background:rgba(255,255,255,.12);border-radius:12px;padding:9px 11px}.hero .hb b{font-weight:800}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tile{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;padding:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:16px;font:inherit;cursor:pointer;min-height:108px}
+.tile:active{transform:scale(.98)}.tile .ic{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:4px}
+.tile b{font-size:15px;font-weight:700}.tile small{color:var(--mute);font-size:12px;line-height:1.3;overflow-wrap:anywhere}
 </style></head><body>
-<div class="app"><header><div class="hd"><div><h1>Mess Mosharraf</h1><p id="sub"></p></div><div class="hr"><button id="gear" aria-label="Settings">⚙</button><button id="out" aria-label="Log out">⎋</button></div></div></header><main id="v"></main></div>
+<div class="app"><header><div class="hd"><div><h1 id="ttl">Mess Mosharraf</h1><p id="sub"></p></div><div class="hr"><button id="gear" aria-label="Settings">⚙</button><button id="out" aria-label="Log out">⎋</button></div></div></header><main id="v"></main></div>
 <nav><div id="nv"></div></nav>
 <script>
 const D={"names":["Fahim","F. Kabir","Hridoy","Jahid","Moin","Sajin","Alif","New merchant"],"fees":[1000,1000,1000,1000,1000,1000,500,500],"meals":[["2026-08-01",[1,1,1,1,1,1,0,0]],["2026-08-02",[1,1,1,1,1,1,0,0]],["2026-08-03",[1,1,1,1,1,0,0,0]],["2026-08-04",[1,1,1,0,1,0,0,0]],["2026-08-05",[1,1,1,0,1,0,0,0]],["2026-08-06",[1,0,1,0,1,0,0,0]],["2026-08-07",[1,1,0,0,1,1,0,0]],["2026-08-08",[0,0,0,0,0,0,0,0]],["2026-08-09",[0,0,0,0,0,0,0,0]],["2026-08-10",[0,0,0,0,0,0,0,0]],["2026-08-11",[1,1,0,1,1,1,0,0]],["2026-08-12",[1,1,0,1,1,0,0,0]],["2026-08-13",[0,1,0,1,1,1,0,0]],["2026-08-14",[0,0,1,0,1,1,0,0]],["2026-08-15",[1,1,1,1,1,0,0,0]],["2026-08-16",[1,1,1,1,1,0,0,0]],["2026-08-17",[0,1,1,1,1,1,0,0]],["2026-08-18",[0,1,1,1,1,1,0,0]],["2026-08-19",[0,1,1,1,1,1,0,0]],["2026-08-20",[0,1,1,1,0,0,0,0]],["2026-08-21",[0,0,0,0,0,0,0,0]],["2026-08-22",[1,0,1,1,1,0,0,0]],["2026-08-23",[1,0,1,1,1,1,0,0]],["2026-08-24",[1,0,1,1,1,1,0,0]],["2026-08-25",[1,0,1,0,1,1,0,0]],["2026-08-26",[0,0,0,0,0,0,0,0]],["2026-08-27",[0,0,0,0,0,0,0,0]],["2026-08-28",[0,0,0,0,0,0,0,0]],["2026-08-29",[1,1,1,1,1,0,0,0]],["2026-08-30",[0,0,0,0,0,0,0,0]],["2026-08-31",[1,1,1,1,1,1,0,0]],["2026-09-01",[1,1,1,1,1,1,0,0]],["2026-09-02",[1,1,1,1,1,1,0,0]],["2026-09-03",[0,1,1,1,1,1,0,0]],["2026-09-04",[0,1,1,1,1,1,0,1]],["2026-09-05",[1,0,1,1,1,0,0,1]],["2026-09-06",[1,0,1,1,1,0,0,1]],["2026-09-07",[1,0,1,1,0,1,0,1]],["2026-09-08",[1,0,1,1,1,1,0,1]],["2026-09-09",[1,0,1,1,1,1,1,1]],["2026-09-10",[1,0,1,1,1,1,1,0]],["2026-09-11",[1,1,1,1,1,1,1,1]],["2026-09-12",[0,0,0,0,0,0,0,0]],["2026-09-13",[0,0,0,0,0,0,0,0]],["2026-09-14",[1,1,1,1,1,1,1,1]],["2026-09-15",[1,1,1,1,1,1,1,1]],["2026-09-16",[1,1,1,1,1,0,1,0]],["2026-09-17",[1,1,1,1,1,1,1,0]],["2026-09-18",[1,1,1,1,0,1,1,0]],["2026-09-19",[1,0,1,1,1,0,1,1]],["2026-09-20",[1,0,1,1,1,0,1,1]],["2026-09-21",[1,0,1,1,1,1,1,1]],["2026-09-22",[1,0,1,1,1,0,1,1]],["2026-09-23",[1,0,1,1,1,0,1,1]],["2026-09-24",[0,0,0,0,0,0,0,0]],["2026-09-25",[1,0,0,0,0,1,1,1]],["2026-09-26",[1,1,0,1,1,0,1,1]],["2026-09-27",[1,1,1,1,1,0,1,1]],["2026-09-28",[1,1,0,1,0,1,0,1]],["2026-09-29",[1,1,1,1,0,1,0,1]],["2026-09-30",[0,0,1,1,1,1,1,1]],["2026-10-01",[0,0,0,1,1,0,1,1]],["2026-10-02",[0,0,0,1,1,0,1,1]]],"deposits":[{"d":"2026-08-01","p":0,"a":1600},{"d":"2026-08-01","p":1,"a":4610},{"d":"2026-08-01","p":2,"a":2740},{"d":"2026-08-01","p":3,"a":1585},{"d":"2026-08-01","p":4,"a":1470},{"d":"2026-08-01","p":5,"a":1180},{"d":"2026-08-02","p":0,"a":1400},{"d":"2026-08-02","p":1,"a":4170},{"d":"2026-08-02","p":6,"a":1250},{"d":"2026-08-02","p":7,"a":1350},{"d":"2026-08-03","p":0,"a":70},{"d":"2026-08-03","p":1,"a":4230},{"d":"2026-08-04","p":0,"a":300},{"d":"2026-08-05","p":0,"a":200}]};
-const K="mess-mosharraf-v2",clone=o=>JSON.parse(JSON.stringify(o));let R,S,tab="home",armed=false,flt=-1,delArm=-1,role=null,mem=-1,askPw=false,RO=false,arc=-1,asub="home",closeArm="",clv="",csv="",sdm="",rmArm=-1,rdArm=false,rdv="",bzArm=false;
+const K="mess-mosharraf-v2",clone=o=>JSON.parse(JSON.stringify(o));let R,S,tab="home",armed=false,flt=-1,delArm=-1,role=null,mem=-1,askPw=false,RO=false,arc=-1,asub="home",closeArm="",clv="",csv="",sdm="",rmArm=-1,rdArm=false,rdv="",bzArm=false,aset="";
 try{R=JSON.parse(localStorage.getItem(K))}catch(e){}
 if(!R||!Array.isArray(R.users)||!R.users.length){let o=null;try{o=JSON.parse(localStorage.getItem("mess-ledger-v1"))}catch(e){}
  R={cur:0,users:[{name:"Mess 1",seed:true,data:o||clone(D)}]}}
@@ -99,10 +107,11 @@ async function gpull(){if(DB||!GU()||pend)return;try{const u=GU(),r=await fetch(
  if(pend)return;
  if(d&&d.json){if((d.t||0)>(R.t||0)&&d.by!==me)adopt(d);else if((d.t||0)<(R.t||0)){push();return}}else{push();return}
  sy="synced";hd()}catch(e){sy="error";hd()}}
-function hd(){const ds=S.meals.map(r=>r[0]);$("#sub").textContent=(role==="member"?S.names[mem]:"Admin")+" · "+fd(ds[0])+" – "+fd(ds[ds.length-1])+({local:" · this device only",syncing:" · syncing…",synced:" · ☁ synced",error:" · sync error"})[sy]}
+function hd(){const tt=$("#ttl");if(tt){tt.textContent=ttl();document.title=ttl()}const ds=S.meals.map(r=>r[0]);$("#sub").textContent=(role==="member"?S.names[mem]:"Admin")+" · "+fd(ds[0])+" – "+fd(ds[ds.length-1])+({local:" · this device only",syncing:" · syncing…",synced:" · ☁ synced",error:" · sync error"})[sy]}
 function adopt(d){try{const o=JSON.parse(d.json);if(!o.users||!o.users.length)return;R.users=o.users;R.t=d.t||0;if(!R.users[R.cur])R.cur=0;S=R.users[R.cur].data;store();
  const a=document.activeElement;if(a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName))hd();else keep(render)}catch(e){}}
 const keep=f=>{const a=document.querySelector(".sc"),x=a?a.scrollLeft:0,y=a?a.scrollTop:0;f();const b=document.querySelector(".sc");if(b){b.scrollLeft=x;b.scrollTop=y}};
+const ttl=()=>S.title||"Mess Mosharraf";
 const $=s=>document.querySelector(s),T=n=>Math.round(n).toLocaleString("en-US");
 const fd=d=>new Date(d+"T00:00:00Z").toLocaleDateString("en-GB",{day:"numeric",month:"short",timeZone:"UTC"});
 function calc(){
@@ -135,17 +144,19 @@ function meals(){
 }
 const ymd=d=>{const x=new Date(d);return x.getFullYear()+"-"+String(x.getMonth()+1).padStart(2,"0")+"-"+String(x.getDate()).padStart(2,"0")};
 const wd=d=>new Date(d+"T00:00:00Z").toLocaleDateString("en-GB",{weekday:"short",timeZone:"UTC"});
-function genBazar(st,dn){const m=S.names.length,L=[];for(let k=0;k<dn;k++)L.push({d:addD(st,k),p:k%m});S.bazar={start:st,days:dn,list:L}}
+function genBazar(st,dn){const m=S.names.length,base=Math.floor(dn/m),ex=dn%m,L=[];let k=0;for(let i=0;i<m;i++){const c=base+(i<ex?1:0);for(let j=0;j<c;j++)L.push({d:addD(st,k++),p:i})}S.bazar={start:st,days:dn,list:L}}
 function bazar(){
  const B=S.bazar,adm=role==="admin"&&!RO,n=S.names,td=ymd(Date.now()),tm=ymd(Date.now()+864e5);
  const who=d=>{const e=B&&B.list.find(x=>x.d===d);return e&&n[e.p]?n[e.p]:"—"};
  let h="<h2>Bazar roster</h2>";
  if(B){const cnt=n.map((_,i)=>B.list.filter(x=>x.p===i).length);
   h+=`<div class="stats" style="grid-template-columns:1fr 1fr"><div><b>${who(td)}</b><span>today</span></div><div><b>${who(tm)}</b><span>tomorrow</span></div></div>
-  <p class="note" style="margin-top:0">${n.map((x,i)=>x+" "+cnt[i]).join(" · ")} (days each)</p>`+
-  B.list.map((e,k)=>`<div class="l"${e.d===td?' style="border-color:var(--pos)"':""}><span><b>${fd(e.d)}</b> <small>${wd(e.d)}${e.d===td?" · today":e.d===tm?" · tomorrow":""}</small></span>${adm?`<select data-bz="${k}" style="width:auto;padding:6px 8px" aria-label="Bazar person for ${fd(e.d)}">${n.map((x,i)=>`<option value="${i}" ${i===e.p?"selected":""}>${x}</option>`).join("")}</select>`:`<b>${n[e.p]||"—"}</b>`}</div>`).join("")}
+  <p class="note" style="margin-top:0">${n.map((x,i)=>x+" "+cnt[i]).join(" · ")} days each</p>`+
+  (()=>{const G=[];B.list.forEach((e,k)=>{const g=G[G.length-1];if(g&&g.p===e.p)g.b=k;else G.push({p:e.p,a:k,b:k})});
+   return G.map(g=>{const da=B.list[g.a].d,db=B.list[g.b].d,c=g.b-g.a+1,now=da<=td&&td<=db;
+    return`<div class="l"${now?' style="border-color:var(--pos)"':""}><span><b>${g.a===g.b?fd(da):fd(da)+" – "+fd(db)}</b> <small>${c} day${c>1?"s":""}${now?" · now":""}</small></span>${adm?`<select data-bz="${g.a}-${g.b}" style="width:auto;padding:6px 8px" aria-label="Bazar person for ${fd(da)}">${n.map((x,i)=>`<option value="${i}" ${i===g.p?"selected":""}>${x}</option>`).join("")}</select>`:`<b>${n[g.p]||"—"}</b>`}</div>`}).join("")})()}
  else h+=`<p class="note">No roster yet.${adm?" Create one below.":" The admin can set one up."}</p>`;
- if(adm)h+=`<h2 style="margin:22px 0 10px">Make a roster</h2><p class="note" style="margin-top:0">Splits the days evenly between all members, taking turns in order. You can change any single day afterwards.</p>
+ if(adm)h+=`<h2 style="margin:22px 0 10px">Make a roster</h2><p class="note" style="margin-top:0">Gives each member a block of days in a row (30 days for 8 members is about 4 days each, one member after another). You can change who has any block afterwards.</p>
   <div class="f"><input id="bs" type="date" value="${B?B.start:S.meals[0][0]}" aria-label="First bazar day"><input id="bn" type="number" inputmode="numeric" min="1" max="90" value="${B?B.days:30}" aria-label="Number of days"><button class="btn full" id="bg" style="margin:0">${bzArm?"Tap again to replace the roster":"Create roster"}</button></div>`;
  return h;
 }
@@ -161,39 +172,56 @@ function dep(){
  <button class="btn full" id="fb" style="margin:0">Add deposit</button></div>
  <h2>History${flt>=0?" – "+n[flt]:""}</h2>`+(L.length?L.map(([x,i])=>`<div class="l"><span><b>${n[x.p]}</b> <small>${fd(x.d)}</small></span><span><b class="pos">৳${T(x.a)}</b><button data-del="${i}" aria-label="Delete deposit">×</button></span></div>`).join(""):"<p class=note>No deposits yet.</p>");
 }
+function bzWho(d){const B=S.bazar,e=B&&B.list.find(x=>x.d===d);return e&&S.names[e.p]?S.names[e.p]:"—"}
+function dash(){
+ const c=calc(),U=R.users,ds=S.meals.map(r=>r[0]),td=ymd(Date.now()),tm=ymd(Date.now()+864e5);
+ const tile=(at,ic,bg,ti,sub)=>`<button class="tile" ${at}><span class="ic" style="background:${bg}">${ic}</span><b>${ti}</b><small>${sub}</small></button>`;
+ return`<div class="hero"><small>Admin panel</small><div class="ht">${ttl()}</div><small>${fd(ds[0])} – ${fd(ds[ds.length-1])} · ${U[R.cur].name}</small>
+ <div class="hg"><div><b>৳${c.rate.toFixed(2)}</b><small>per meal</small></div><div><b>${c.tm}</b><small>meals</small></div><div><b>৳${T(c.td)}</b><small>deposited</small></div></div>
+ ${S.bazar?`<div class="hb">🛒 Bazar today <b>${bzWho(td)}</b> · tomorrow <b>${bzWho(tm)}</b></div>`:""}</div><div class="tiles">`+
+ tile('data-sec="members"',"👥","rgba(27,127,92,.18)","Members",S.names.length+" people, khala bill")+
+ tile('data-t="bz"',"🛒","rgba(224,160,40,.22)","Bazar roster",S.bazar?"Today: "+bzWho(td):"Not set yet")+
+ tile('data-t="dep"',"💰","rgba(27,127,92,.18)","Deposits","৳"+T(c.td)+" in, "+S.deposits.length+" entries")+
+ tile('data-sec="month"',"📅","rgba(60,120,200,.2)","Month","From "+fd(ds[0])+". Start date, close month")+
+ tile('data-sec="name"',"✏️","rgba(200,80,120,.18)","App name",ttl())+
+ tile('data-sec="logs"',"🗂️","rgba(120,90,200,.18)","Logs",U.length+(U.length>1?" logs":" log")+", active: "+U[R.cur].name)+
+ tile('data-sec="sync"',"☁️","rgba(40,160,190,.2)","Sync",({local:"This device only",syncing:"Syncing…",synced:"Synced",error:"Sync error"})[sy])+
+ tile('data-sec="backup"',"💾","rgba(120,120,120,.2)","Backup","Export or import a log")+`</div>`;
+}
 function set(){
- const U=R.users;
- return`<h2>Logs</h2><p class="note" style="margin-top:0">Each log is a separate set of members, meals and deposits. Tap ○ to switch the active log.</p>`+
- U.map((u,i)=>`<div class="f2" style="grid-template-columns:auto 1fr auto"><button class="sw ${i===R.cur?"on":""}" data-sw="${i}" aria-label="Switch to ${u.name}">${i===R.cur?"●":"○"}</button><input data-un="${i}" value="${u.name}" aria-label="Log name">${U.length>1?`<button class="x" data-ud="${i}">${delArm===i?"Delete?":"×"}</button>`:""}</div>`).join("")+
- `<button class="btn g" id="au">Add log</button>
- <h2 style="margin:22px 0 10px">Members of ${U[R.cur].name}</h2><div class="f2"><small>Name</small><small>Khala bill (৳)</small></div>`+
+ if(!aset)return dash();
+ const U=R.users,P={};
+ P.logs=`<h2>Logs</h2><p class="note" style="margin-top:0">Each log is a separate set of members, meals and deposits. Tap ○ to switch the active log.</p>`+
+ U.map((u,i)=>`<div class="f2" style="grid-template-columns:auto 1fr auto"><button class="sw ${i===R.cur?"on":""}" data-sw="${i}" aria-label="Switch to ${u.name}">${i===R.cur?"●":"○"}</button><input data-un="${i}" value="${u.name}" aria-label="Log name">${U.length>1?`<button class="x" data-ud="${i}">${delArm===i?"Delete?":"×"}</button>`:""}</div>`).join("")+`<button class="btn g" id="au">Add log</button>`;
+ P.members=`<h2>Members of ${U[R.cur].name}</h2><div class="f2"><small>Name</small><small>Khala bill (৳)</small></div>`+
  S.names.map((n,i)=>`<div class="p" style="padding:8px"><div class="f2"><input data-nm="${i}" value="${n}" aria-label="Name"><input data-fee="${i}" type="number" inputmode="numeric" value="${S.fees[i]}" aria-label="Khala bill share"></div>
  ${S.names.length>1?`<div class="f2" style="grid-template-columns:1fr;margin-bottom:0"><button class="x" data-rm="${i}" style="padding:9px" aria-label="Remove ${n}">${rmArm===i?"Tap again to remove "+n:"Remove member"}</button></div>`:""}</div>`).join("")+
- `<p class="note" style="margin:0 0 8px">Removing a member also deletes their meals and deposits for this month.</p><button class="btn g" id="am">Add member</button>
- <h2 style="margin:22px 0 10px">Current month start date</h2><p class="note" style="margin-top:0">First day of the open month is ${fd(S.meals[0][0])}. Change it if the month should start earlier or later (a later date only works if the days being removed have no meals marked).</p>
+ `<p class="note" style="margin:0 0 8px">Removing a member also deletes their meals and deposits for this month.</p><button class="btn g" id="am">Add member</button>`;
+ P.name=`<h2>App name</h2><p class="note" style="margin-top:0">Shown at the top of the app and on the welcome screen. It is saved with this log and syncs to every device.</p><input data-ttl="1" maxlength="30" value="${(S.title||"").replace(/"/g,"")}" placeholder="Mess Mosharraf" aria-label="App name">`;
+ P.month=`<h2>Current month start date</h2><p class="note" style="margin-top:0">First day of the open month is ${fd(S.meals[0][0])}. Change it if the month should start earlier or later (a later date only works if the days being removed have no meals marked).</p>
  <input id="sd" type="date" value="${sdm||S.meals[0][0]}" aria-label="Current month start date"><button class="btn g" id="sdb">Change start date</button><p class="note" id="sdn" style="margin-top:6px"></p>
  <h2 style="margin:22px 0 10px">Close the month</h2><p class="note" style="margin-top:0">Saves this month's account under Months (view only) and opens a new, empty month with the same members.</p>
  <input id="cl" value="${clv}" placeholder="Month name, e.g. October 2026" aria-label="Month name" style="margin-bottom:8px">
  <small>New month starts on</small><input id="cs" type="date" value="${csv||nxt()}" aria-label="New month start date" style="margin:4px 0 8px">
  <div class="f2" style="grid-template-columns:1fr 1fr"><button class="btn g" data-cm="carry" style="margin:0">${closeArm==="carry"?"Tap again to confirm":"Close, carry balances"}</button><button class="btn g" data-cm="fresh" style="margin:0">${closeArm==="fresh"?"Tap again to confirm":"Close, start fresh"}</button></div>
- <p class="note">Carry: each person's balance moves into the new month. Fresh: balances start at zero, for when everyone has settled up.</p>
- <h2 style="margin:22px 0 10px">Sync</h2><p class="note" style="margin-top:0">${DB?"☁ Synced through Claude across your devices.":GU()?"☁ Synced with Google (Drive). Paste the same link on each device.":"Not connected, so data stays on this device. Paste your Google sync link below to sync across devices."}</p>
- ${DB?"":`<input data-gu="1" value="${GU().replace(/"/g,"")}" placeholder="Google Apps Script web app link (https://script.google.com/macros/s/…/exec)" aria-label="Google sync link" autocomplete="off">`}
- <h2 style="margin:22px 0 10px">Backup</h2><textarea id="bk" rows="4" placeholder="Export fills this box. Paste a log here to import it."></textarea>
- <div class="f2" style="grid-template-columns:1fr 1fr"><button class="btn g" id="ex" style="margin:0">Export log</button><button class="btn g" id="im" style="margin:0">Import as log</button></div><p class="note" id="bm"></p>
- <button class="btn" id="dn">Done</button>`;
+ <p class="note">Carry: each person's balance moves into the new month. Fresh: balances start at zero, for when everyone has settled up.</p>`;
+ P.sync=`<h2>Sync</h2><p class="note" style="margin-top:0">${DB?"☁ Synced through Claude across your devices.":GU()?"☁ Synced with Google (Drive). Paste the same link on each device.":"Not connected, so data stays on this device. Paste your Google sync link below to sync across devices."}</p>
+ ${DB?"":`<input data-gu="1" value="${GU().replace(/"/g,"")}" placeholder="Google Apps Script web app link (https://script.google.com/macros/s/…/exec)" aria-label="Google sync link" autocomplete="off">`}`;
+ P.backup=`<h2>Backup</h2><textarea id="bk" rows="4" placeholder="Export fills this box. Paste a log here to import it."></textarea>
+ <div class="f2" style="grid-template-columns:1fr 1fr"><button class="btn g" id="ex" style="margin:0">Export log</button><button class="btn g" id="im" style="margin:0">Import as log</button></div><p class="note" id="bm"></p>`;
+ return`<button class="btn g" data-sec="" style="margin:0 0 14px">← Admin panel</button>`+(P[aset]||"")+`<button class="btn" id="dn">Done</button>`;
 }
 const AH=3249131016726240;
 const H=s=>{let a=0xdeadbeef,b=0x41c6ce57;for(let i=0,c;i<s.length;i++){c=s.charCodeAt(i);a=Math.imul(a^c,2654435761);b=Math.imul(b^c,1597334677)}a=Math.imul(a^(a>>>16),2246822507)^Math.imul(b^(b>>>13),3266489909);b=Math.imul(b^(b>>>16),2246822507)^Math.imul(a^(a>>>13),3266489909);return 4294967296*(2097151&b)+(a>>>0)};
 function welcome(){
  const L=R.users;
- return`<div class="wl"><div class="lg">🍚</div><h1>Mess Mosharraf</h1><p class="note" style="margin:4px 0 16px">Who's here?</p>`+
+ return`<div class="wl"><div class="lg">🍚</div><h1>${ttl()}</h1><p class="note" style="margin:4px 0 16px">Who's here?</p>`+
  (L.length>1?`<select id="ls" aria-label="Log">${L.map((u,i)=>`<option value="${i}" ${i===R.cur?"selected":""}>${u.name}</option>`).join("")}</select>`:"")+
  `<div class="gr">${S.names.map((n,i)=>`<button class="mc" data-mem="${i}"><span class="av">${n.trim().charAt(0).toUpperCase()}</span>${n}</button>`).join("")}</div>`+
  (askPw?`<div class="pw"><input id="pw" type="password" inputmode="numeric" placeholder="Admin password" autocomplete="off" aria-label="Admin password"><button class="btn" id="pwb" style="margin-top:8px">Enter as admin</button><p class="note" id="pe" style="color:var(--neg);margin:8px 0 0"></p></div>`:`<button class="btn" data-adm="1">🔒 Admin</button>`)+`</div>`;
 }
 function tryPw(){const v=$("#pw").value.trim();
- if(H(v)===AH){role="admin";mem=-1;askPw=false;tab="home";render();scrollTo(0,0)}
+ if(H(v)===AH){role="admin";mem=-1;askPw=false;tab="set";aset="";render();scrollTo(0,0)}
  else{$("#pe").textContent="Wrong password. Try again.";$("#pw").value="";$("#pw").focus()}}
 const nxt=()=>new Date(Date.parse(S.meals[S.meals.length-1][0]+"T00:00:00Z")+864e5).toISOString().slice(0,10);
 const inS=(d,f)=>{const k=S;S=d;try{return f()}finally{S=k}};
@@ -254,7 +282,8 @@ function render(){
 document.addEventListener("click",e=>{
  const tr=e.target.closest("tr[data-flt]");if(tr){const k=+tr.dataset.flt;flt=flt===k?-1:k;render();return}
  const t=e.target.closest("button");if(!t)return;
- if(t.id==="gear"||t.id==="who"){tab="set";armed=false;delArm=-1;rmArm=-1;render();scrollTo(0,0);return}
+ if(t.dataset.sec!==undefined){aset=t.dataset.sec;armed=false;delArm=-1;rmArm=-1;closeArm="";render();scrollTo(0,0);return}
+ if(t.id==="gear"||t.id==="who"){tab="set";aset="";armed=false;delArm=-1;rmArm=-1;render();scrollTo(0,0);return}
  if(t.dataset.mem!==undefined){role="member";mem=+t.dataset.mem;tab="me";render();scrollTo(0,0);return}
  if(t.dataset.adm){askPw=true;render();const p=$("#pw");if(p)p.focus();return}
  if(t.id==="pwb"){tryPw();return}
@@ -281,9 +310,9 @@ document.addEventListener("click",e=>{
   const st=$("#bs").value,dn=Math.min(90,Math.max(1,parseInt($("#bn").value)||30));if(!/^\d{4}-\d{2}-\d{2}$/.test(st)){$("#bs").focus();return}
   genBazar(st,dn);bzArm=false;save();render();return}
  if(t.id==="sdb"){if(role!=="admin")return;const m=setStart($("#sd").value);if(m){$("#sdn").textContent=m;return}sdm="";save();render();$("#sdn").textContent="Start date updated.";return}
- if(t.id==="dn"){tab="home";render();scrollTo(0,0);return}
+ if(t.id==="dn"){tab="set";aset="";render();scrollTo(0,0);return}
  if(t.id==="am"){S.names.push("Member "+(S.names.length+1));S.fees.push(0);if(S.open)S.open.push(0);S.meals.forEach(r=>r[1].push(0));save();render();return}
- if(t.dataset.t){tab=t.dataset.t;armed=false;delArm=-1;arc=-1;closeArm="";rmArm=-1;rdArm=false;bzArm=false;render();scrollTo(0,0);return}
+ if(t.dataset.t){tab=t.dataset.t;aset="";armed=false;delArm=-1;arc=-1;closeArm="";rmArm=-1;rdArm=false;bzArm=false;render();scrollTo(0,0);return}
  if(t.dataset.c!==undefined){const r=S.meals[t.dataset.r][1],j=+t.dataset.c;if(!(role==="admin"||(role==="member"&&j===mem)))return;r[j]=r[j]?0:1;keep(()=>{save();render()});return}
  if(t.dataset.row!==undefined){const r=S.meals[t.dataset.row][1],v=r.every(x=>x)?0:1;S.meals[t.dataset.row][1]=r.map(()=>v);keep(()=>{save();render()});return}
  if(t.id==="ad"){const l=S.meals[S.meals.length-1];S.meals.push([new Date(Date.parse(l[0]+"T00:00:00Z")+864e5).toISOString().slice(0,10),S.names.map(()=>0)]);save();render();return}
@@ -294,6 +323,7 @@ document.addEventListener("click",e=>{
 });
 document.addEventListener("input",e=>{const t=e.target;
  if(t.id==="rdt"){rdv=t.value;rdArm=false;const n=$("#rdn");if(n)n.textContent=""}
+ if(t.dataset.ttl!==undefined){S.title=t.value.replace(/[<>&"]/g,"").slice(0,30);save();hd()}
  if(t.id==="cs")csv=t.value;
  if(t.id==="sd")sdm=t.value;
  if(t.id==="cl")clv=t.value.replace(/[<>&"]/g,"");
@@ -303,7 +333,7 @@ document.addEventListener("input",e=>{const t=e.target;
  if(t.dataset.fee!==undefined){S.fees[t.dataset.fee]=Math.max(0,+t.value||0);save()}
 });
 document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.id==="pw")tryPw()});
-document.addEventListener("change",e=>{if(e.target.dataset.bz!==undefined&&role==="admin"&&S.bazar){S.bazar.list[+e.target.dataset.bz].p=+e.target.value;save();keep(render);return}
+document.addEventListener("change",e=>{if(e.target.dataset.bz!==undefined&&role==="admin"&&S.bazar){{const[a,b]=e.target.dataset.bz.split("-").map(Number);for(let k=a;k<=b;k++)S.bazar.list[k].p=+e.target.value}save();keep(render);return}
  if(e.target.id==="ls"){R.cur=+e.target.value;S=R.users[R.cur].data;store();render()}});
 render();
 if("serviceWorker"in navigator&&location.protocol==="https:")navigator.serviceWorker.register("sw.js").catch(()=>{});
